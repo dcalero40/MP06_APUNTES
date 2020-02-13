@@ -1,0 +1,10 @@
+public static Connection getConection(){
+        Connection connection = null;
+        try {
+            connection = DriverManager.getConnection("jdbc:mysql://192.168.22.197:3306/NBA", "david", "*David98*");
+            System.out.println("Connected");
+        } catch (SQLException e) {
+            System.out.println(e);
+        }
+        return connection;
+    }
