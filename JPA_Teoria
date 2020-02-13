@@ -1,16 +1,19 @@
 //Crear el entity manager
-  EntityManagerFactory emf= Persistence.createEntityManagerFactory("damPersistence");
-  EntityManager em = emf.createEntityManager();
+    EntityManagerFactory emf= Persistence.createEntityManagerFactory("damPersistence");
+    EntityManager em = emf.createEntityManager();
 
 //Subir un objeto a la base de datos
-  //primero creamos el obejto y despues lo subimos.
-  Alumno alumno = new Alumno();
-  alumno.setDni(in.nextInt());
-  alumno.setNombre(in.nextLine());
+    //primero creamos el obejto y despues lo subimos.
+        Alumno alumno = new Alumno();
+        alumno.setDni(in.nextInt());
+        in.nextLine();
+        alumno.setNombre(in.nextLine());
   
-  //Subimos el nuevo objeto a la bbdd
-  em.getTransaction().begin();
-  em.persist(alumno);
-  em.getTransaction().commit();
+    //Subimos el nuevo objeto a la bbdd
+        em.getTransaction().begin();
+        em.persist(alumno);
+       em.getTransaction().commit();
 
-
+//Metodo para obtener una Lista de una clase concreta
+    TypedQuery<Clase> query = em.createQuery("SELECT c FROM Clase c",Clase.class);
+    List<Clase> clases = query.getResultList();
